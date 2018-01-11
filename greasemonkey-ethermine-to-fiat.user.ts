@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name     ethermine-to-fiat
 // @description shows the current unpaid balance as fiat on the ethermine miners page
-// @version  1.1.0
+// @version  1.2.0
 // @include		https://ethermine.org/miners/*
 // @namespace https://greasyfork.org/users/165561
 // ==/UserScript==
@@ -44,7 +44,7 @@ const currencies: Currency[] = [
   { "l": "TRY", "c": "TRY" },
   { "l": "NT$", "c": "TWD" },
   { "l": "R", "c": "ZAR" }];
-  
+
 const select = document.createElement('select');
 select.style.color = '#000';
 select.onchange = (e: Event) => {
@@ -60,12 +60,13 @@ const value = /[0-9\.]+/.exec(panel.innerHTML)[0].trim();
 let init = false;
 let valueInFiat;
 
-const getEthereum = function(currency: Currency) {
+const getEthereum = function (currency: Currency) {
   const request = new XMLHttpRequest();
-  request.addEventListener("load",function() {
+  request.addEventListener("load", function () {
     if (!init) {
       valueInFiat = document.createElement('p');
       valueInFiat.id = 'getf';
+      valueInFiat.style.padding = '20px 0px 0px 0px';
       panel.parentElement.appendChild(valueInFiat);
       panel.parentElement.appendChild(select);
       init = true;

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name     ethermine-to-fiat
 // @description shows the current unpaid balance as fiat on the ethermine miners page
-// @version  1.1.0
+// @version  1.2.0
 // @include		https://ethermine.org/miners/*
 // @namespace https://greasyfork.org/users/165561
 // ==/UserScript==
@@ -57,6 +57,7 @@ var getEthereum = function (currency) {
         if (!init) {
             valueInFiat = document.createElement('p');
             valueInFiat.id = 'getf';
+            valueInFiat.style.padding = '20px 0px 0px 0px';
             panel.parentElement.appendChild(valueInFiat);
             panel.parentElement.appendChild(select);
             init = true;
